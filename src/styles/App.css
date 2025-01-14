@@ -21,6 +21,8 @@ body {
     text-align: center;
     width: 100%;
     padding: 20px;
+    box-sizing: border-box; /* Ensure padding doesn't cause overflow */
+    overflow-x: hidden; /* Ensure no horizontal scrolling */
 }
 
 /* Header style */
@@ -41,6 +43,7 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
+    max-width: 100%; /* Ensure the container doesn't exceed the width */
 }
 
 /* Logo styling */
@@ -58,6 +61,7 @@ body {
     flex-wrap: wrap; /* Allows wrapping on smaller screens */
     justify-content: center; /* Center the menu items */
     width: 100%;
+    box-sizing: border-box; /* Ensure the width is confined */
 }
 
 /* Navigation links */
@@ -107,6 +111,8 @@ body {
         align-items: center; /* Center links vertically on small screens */
         gap: 10px;
         width: 100%; /* Ensure full width for mobile */
+        padding: 0; /* Remove any padding that might cause overflow */
+        margin: 0;  /* Remove any margin that might cause overflow */
     }
 
     .nav-link, .nav-button {
