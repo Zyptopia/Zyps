@@ -52,7 +52,32 @@ body {
 .logo {
     font-size: 3rem;
     font-weight: 700;
-    color: white;  /* Uniform color to match theme */
+    color: white;  /* Change the logo color to white to match text */
+}
+
+@media (max-width: 768px) {
+    .logo {
+        font-size: 2rem; /* Reduce logo size on mobile */
+        margin-bottom: 10px; /* Reduced space between logo and menu */
+    }
+
+    .header-container {
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Adjust navigation links for mobile */
+    .navigation {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        align-items: center; /* Ensure menu items are centered */
+    }
+
+    .nav-link, .nav-button {
+        width: 80%;  /* Make the menu buttons a little smaller than full width */
+        text-align: center;
+    }
 }
 
 /* Navigation container */
@@ -96,30 +121,6 @@ body {
 .nav-button:hover {
     background-color: #21a1f1;
     transform: scale(1.05);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .App {
-        padding: 10px;
-    }
-
-    .header-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-
-    .navigation {
-        flex-direction: column;
-        gap: 10px;
-        width: 100%;
-    }
-
-    .nav-link, .nav-button {
-        width: 100%;
-        text-align: center;
-    }
 }
 
 /* Home Page */
