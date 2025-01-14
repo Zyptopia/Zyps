@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'; // Using BrowserRouter instead of HashRouter
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -24,7 +24,9 @@ const App = () => {
     <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        {/* Update the path for the homepage */}
+        <Route path="/" element={<HomePage />} />  {/* Default home page route */}
+        <Route path="/Zyps" element={<HomePage />} /> {/* If Zyps is a custom homepage route */}
         <Route path="/about" element={<AboutPage />} />
         <Route path="/calculator" element={<ZypsEarningsCalculator />} />
         <Route path="/login" element={<LoginPage />} />
