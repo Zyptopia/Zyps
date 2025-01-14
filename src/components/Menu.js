@@ -7,7 +7,7 @@ function Menu({ handleLogout }) {
 
   return (
     <nav className="navigation">
-      <Link to="/Zyps/" className="nav-link">Home</Link>
+      <Link to="/" className="nav-link">Home</Link>
       <Link to="/about" className="nav-link">About</Link>
       {auth.currentUser && (
         <>

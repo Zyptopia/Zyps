@@ -24,7 +24,7 @@ const App = () => {
     <Router>
       <Header />
       <Routes>
-        <Route path="/Zyps" element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/calculator" element={<ZypsEarningsCalculator />} />
         <Route path="/login" element={<LoginPage />} />
