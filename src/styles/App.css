@@ -6,10 +6,10 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    flex-direction: column; /* Ensure the content is stacked vertically */
+    flex-direction: column;
     justify-content: flex-start;
     height: 100vh;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-x: hidden;  /* Ensure no horizontal scrolling */
 }
 
 /* The main App wrapper */
@@ -21,34 +21,33 @@ body {
     text-align: center;
     width: 100%;
     padding: 20px;
-    box-sizing: border-box; /* Ensure padding doesn't cause overflow */
+    box-sizing: border-box;
     overflow-x: hidden; /* Ensure no horizontal scrolling */
 }
 
-/* Header style */
+/* Header styling */
 .App-header {
     background-color: #282c34;
     color: white;
     padding: 20px;
     width: 100%;
     text-align: center;
-    margin-bottom: 20px;  /* Add space between header and content */
     box-sizing: border-box;
+    margin-bottom: 20px;
 }
 
 /* Header container: Center logo and menu */
 .header-container {
     display: flex;
-    flex-direction: column; /* Stack logo and menu vertically */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 100%; /* Ensure the container doesn't exceed the width */
 }
 
 /* Logo styling */
 .logo {
-    font-size: 2rem; /* Make it more prominent */
+    font-size: 2rem; /* Larger size for logo */
     font-weight: 600;
     margin: 0;
     padding-bottom: 10px; /* Space between logo and menu */
@@ -61,7 +60,7 @@ body {
     flex-wrap: wrap; /* Allows wrapping on smaller screens */
     justify-content: center; /* Center the menu items */
     width: 100%;
-    box-sizing: border-box; /* Ensure the width is confined */
+    box-sizing: border-box; /* Prevents overflow */
 }
 
 /* Navigation links */
@@ -101,23 +100,23 @@ body {
 @media (max-width: 768px) {
     .header-container {
         flex-direction: column;
-        gap: 10px;
-        align-items: center; /* Ensure the items are centered horizontally */
-        justify-content: center;
+        align-items: center; /* Center logo and menu */
+        gap: 10px;  /* Space between logo and menu */
+        padding: 0;  /* Remove padding to avoid overflow */
     }
 
     .navigation {
-        flex-direction: column;
-        align-items: center; /* Center links vertically on small screens */
+        flex-direction: column;  /* Stack menu items vertically */
         gap: 10px;
-        width: 100%; /* Ensure full width for mobile */
-        padding: 0; /* Remove any padding that might cause overflow */
-        margin: 0;  /* Remove any margin that might cause overflow */
+        width: 100%;  /* Ensure full width for mobile */
+        padding: 0;  /* Remove padding that could cause overflow */
+        margin: 0;   /* Remove margin to prevent horizontal overflow */
+        box-sizing: border-box;
     }
 
     .nav-link, .nav-button {
-        width: 100%; /* Make links/buttons full-width on smaller screens */
-        text-align: center;
+        width: 100%;  /* Make menu items full width */
+        text-align: center; /* Center text */
     }
 }
 
@@ -134,7 +133,7 @@ body {
 }
 
 .page-content h1 {
-    margin-top: 0;  /* Ensure there's no unnecessary space at the top */
+    margin-top: 0;
 }
 
 /* Styling for select input */
@@ -177,21 +176,6 @@ select {
     color: #aaa;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .App {
-        padding: 10px;
-    }
-
-    select, input {
-        width: 100%; /* Ensure inputs and selects take full width */
-    }
-
-    .page-content {
-        padding: 10px;
-    }
-}
-
 /* Footer styling */
 .App-footer {
     background-color: #282c34;
@@ -200,16 +184,14 @@ select {
     padding: 10px 20px;
     font-size: 0.8rem;
     width: 100%;
-    box-sizing: border-box; /* Ensure padding doesn't cause overflow */
-    bottom: 0;
-    position: relative; /* Make it stay at the bottom */
-    z-index: 100; /* Ensures it stays above content */
-    overflow: hidden; /* Prevents any content from overflowing */
+    box-sizing: border-box;
+    position: relative;
+    z-index: 100;
 }
 
 .App-footer p {
     margin: 5px 0;
     line-height: 1.5;
-    word-wrap: break-word; /* Prevent long words from causing overflow */
-    overflow-wrap: break-word; /* Ensures long words get wrapped */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
