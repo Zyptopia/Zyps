@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom'; // Change BrowserRouter to HashRouter
 import { getAuth, onAuthStateChanged } from 'firebase/auth'; // Firebase v9+ modular imports
 import Header from './components/Header';
 import Footer from './components/Footer';
