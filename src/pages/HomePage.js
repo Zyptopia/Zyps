@@ -13,6 +13,8 @@ const HomePage = () => {
   const [zyptoOwned, setZyptoOwned] = useState('');
   const [calculatedRewards, setCalculatedRewards] = useState(0);
   const [yearlyRewards, setYearlyRewards] = useState(0); // State for yearly rewards
+  const [dailyUSD, setDailyUSD] = useState(0); // State for daily rewards in USD
+  const [yearlyUSD, setYearlyUSD] = useState(0); // State for yearly rewards in USD
 
   const handleDateRangeChange = (e) => {
     const selectedRange = e.target.value;
@@ -52,11 +54,21 @@ const HomePage = () => {
     setZyptoOwned(input);
     if (input && !isNaN(input)) {
       const dailyRewards = (input / 1000000) * averageReward;
+      const yearlyRewards = dailyRewards * 365;
+      
+      // Calculate daily and yearly rewards in USD (1000 Zyps = 1 USD)
+      const dailyUSD = dailyRewards / 1000;  // Convert Zyps to USD
+      const yearlyUSD = yearlyRewards / 1000;  // Convert Zyps to USD
+
       setCalculatedRewards(dailyRewards);
-      setYearlyRewards(dailyRewards * 365); // Calculate yearly rewards
+      setYearlyRewards(yearlyRewards);
+      setDailyUSD(dailyUSD);
+      setYearlyUSD(yearlyUSD);
     } else {
       setCalculatedRewards(0);
       setYearlyRewards(0);
+      setDailyUSD(0);
+      setYearlyUSD(0);
     }
   };
 
@@ -118,8 +130,11 @@ const HomePage = () => {
         <br></br>
         <label htmlFor="zyptoOwned">Zypto Owned:</label>
         <input id="zyptoOwned" type="number" value={zyptoOwned} onChange={handleZyptoOwnedChange} placeholder="Enter amount of Zypto owned" />
-        <div><br></br><strong>Average daily Zyp rewards:<span>{calculatedRewards ? `${calculatedRewards.toFixed(2)} Zyp` : '0 Zyps'}</span></strong></div>
-        <div><br></br><strong>Yearly average Zyp rewards:<span>{yearlyRewards ? `${yearlyRewards.toFixed(2)} Zyp` : '0 Zyps'}</span></strong></div>
+        <div><br></br><strong>Average daily Zyp rewards: <span>{calculatedRewards ? `${calculatedRewards.toFixed(2)} Zyp` : '0 Zyps'}</span></strong></div>
+        <div><br></br><strong>Daily average Zyp rewards in $USD: <span>{dailyUSD ? `$${dailyUSD.toFixed(2)}` : '$0.00'}</span></strong></div>
+        <div><br></br><strong>Yearly average Zyp rewards: <span>{yearlyRewards ? `${yearlyRewards.toFixed(2)} Zyp` : '0 Zyps'}</span></strong></div>
+        <div><br></br><strong>Yearly average Zyp rewards in $USD: <span>{yearlyUSD ? `$${yearlyUSD.toFixed(2)}` : '$0.00'}</span></strong></div>
+
         <br></br><small>*based on current daily average*</small>
       </div>
     </div>
