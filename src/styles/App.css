@@ -9,7 +9,7 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     height: 100vh;
-    overflow-x: hidden;  /* Ensure no horizontal scrolling */
+    overflow-x: hidden;  /* Prevent horizontal scrolling */
 }
 
 /* The main App wrapper */
@@ -22,7 +22,7 @@ body {
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
-    overflow-x: hidden; /* Ensure no horizontal scrolling */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 /* Header styling */
@@ -39,7 +39,7 @@ body {
 /* Header container: Center logo and menu */
 .header-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Stack logo and menu vertically */
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -60,7 +60,7 @@ body {
     flex-wrap: wrap; /* Allows wrapping on smaller screens */
     justify-content: center; /* Center the menu items */
     width: 100%;
-    box-sizing: border-box; /* Prevents overflow */
+    box-sizing: border-box;
 }
 
 /* Navigation links */
@@ -100,18 +100,14 @@ body {
 @media (max-width: 768px) {
     .header-container {
         flex-direction: column;
-        align-items: center; /* Center logo and menu */
-        gap: 10px;  /* Space between logo and menu */
-        padding: 0;  /* Remove padding to avoid overflow */
+        align-items: center;
+        gap: 10px;
     }
 
     .navigation {
         flex-direction: column;  /* Stack menu items vertically */
         gap: 10px;
         width: 100%;  /* Ensure full width for mobile */
-        padding: 0;  /* Remove padding that could cause overflow */
-        margin: 0;   /* Remove margin to prevent horizontal overflow */
-        box-sizing: border-box;
     }
 
     .nav-link, .nav-button {
