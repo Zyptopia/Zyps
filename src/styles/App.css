@@ -9,10 +9,11 @@ body {
     flex-direction: column; /* Ensure the content is stacked vertically */
     justify-content: flex-start;
     height: 100vh;
-  }
-  
-  /* The main App wrapper */
-  .App {
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* The main App wrapper */
+.App {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -20,10 +21,10 @@ body {
     text-align: center;
     width: 100%;
     padding: 20px;
-  }
-  
-  /* Header style */
-  .App-header {
+}
+
+/* Header style */
+.App-header {
     background-color: #282c34;
     color: white;
     padding: 20px;
@@ -31,30 +32,32 @@ body {
     text-align: center;
     margin-bottom: 20px;  /* Add space between header and content */
     box-sizing: border-box;
-  }
+}
 
-  /* Header container */
-  .header-container {
+/* Header container */
+.header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
+    width: 100%;
+}
 
-  /* Logo styling */
-  .logo {
+/* Logo styling */
+.logo {
     font-size: 1.5rem;
     font-weight: 600;
     margin: 0;
-  }
+}
 
-  /* Navigation container */
-  .navigation {
+/* Navigation container */
+.navigation {
     display: flex;
     gap: 15px;
-  }
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
 
-  /* Navigation links */
-  .nav-link {
+/* Navigation links */
+.nav-link {
     text-decoration: none;
     color: white;
     font-size: 1rem;
@@ -62,15 +65,15 @@ body {
     border-radius: 5px;
     transition: background-color 0.3s ease, color 0.3s ease;
     font-weight: 500;
-  }
+}
 
-  .nav-link:hover {
+.nav-link:hover {
     background-color: white; /* Highlight on hover */
     color: #282c34; /* Dark text for contrast */
-  }
+}
 
-  /* Button for logout */
-  .nav-button {
+/* Button for logout */
+.nav-button {
     padding: 8px 15px;
     background-color: #61dafb;
     border: none;
@@ -79,34 +82,34 @@ body {
     cursor: pointer;
     font-size: 1rem;
     transition: background-color 0.3s ease, transform 0.2s ease;
-  }
+}
 
-  .nav-button:hover {
+.nav-button:hover {
     background-color: #21a1f1; /* Slightly darker hover color */
     transform: scale(1.05); /* Add a subtle scale effect */
-  }
+}
 
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
+/* Responsive adjustments */
+@media (max-width: 768px) {
     .header-container {
-      flex-direction: column;
-      gap: 10px;
+        flex-direction: column;
+        gap: 10px;
     }
 
     .navigation {
-      flex-direction: column;
-      align-items: flex-start; /* Align links to the left */
-      gap: 10px;
+        flex-direction: column;
+        align-items: center; /* Center links vertically on small screens */
+        gap: 10px;
     }
 
     .nav-link, .nav-button {
-      width: 100%; /* Make links/buttons full-width on smaller screens */
-      text-align: center;
+        width: 100%; /* Make links/buttons full-width on smaller screens */
+        text-align: center;
     }
-  }
+}
 
-  /* Home Page */
-  .page-content {
+/* Home Page */
+.page-content {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -115,14 +118,14 @@ body {
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
-  }
-  
-  .page-content h1 {
+}
+
+.page-content h1 {
     margin-top: 0;  /* Ensure there's no unnecessary space at the top */
-  }
-  
-  /* Styling for select input */
-  select {
+}
+
+/* Styling for select input */
+select {
     margin: 10px;
     padding: 10px;
     background-color: #333;
@@ -130,23 +133,23 @@ body {
     border: 1px solid #555;
     border-radius: 5px;
     width: 300px; /* Set width for select dropdown */
-  }
-  
-  /* Earnings Calculator */
-  .earnings-calculator {
+}
+
+/* Earnings Calculator */
+.earnings-calculator {
     background-color: #333;
     padding: 20px;
     border-radius: 5px;
     margin-top: 20px;
     width: 100%;
     max-width: 600px;
-  }
-  
-  .earnings-calculator h2 {
+}
+
+.earnings-calculator h2 {
     margin-top: 0;
-  }
-  
-  .earnings-calculator input {
+}
+
+.earnings-calculator input {
     padding: 10px;
     font-size: 16px;
     border-radius: 5px;
@@ -155,26 +158,27 @@ body {
     color: white;
     width: 100%;
     margin-bottom: 10px;
-  }
-  
-  .earnings-calculator small {
+}
+
+.earnings-calculator small {
     color: #aaa;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
     .App {
-      padding: 10px;
+        padding: 10px;
     }
-  
+
     select, input {
-      width: 100%;
+        width: 100%; /* Ensure inputs and selects take full width */
     }
-  
+
     .page-content {
-      padding: 10px;
+        padding: 10px;
     }
-  }
+}
+
 /* Footer styling */
 .App-footer {
     background-color: #282c34;
@@ -186,10 +190,9 @@ body {
     width: 100%;
     box-shadow: 0px -1px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for separation */
     z-index: 100; /* Ensures it stays above content */
-  }
-  
-  .App-footer p {
+}
+
+.App-footer p {
     margin: 5px 0;
     line-height: 1.5;
-  }
-  
+}

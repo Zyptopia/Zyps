@@ -116,8 +116,8 @@ const HomePage = () => {
         <h2>Earnings Calculator</h2>
         <label htmlFor="zyptoOwned">Zypto Owned:</label>
         <input id="zyptoOwned" type="number" value={zyptoOwned} onChange={handleZyptoOwnedChange} placeholder="Enter amount of Zypto owned" />
-        <div><strong>*Average daily Zyp rewards:</strong><span>{calculatedRewards ? `${calculatedRewards.toFixed(2)} Zyp` : '0 Zyp'}</span></div>
-        <div><strong>*Yearly average Zyp rewards:</strong><span>{yearlyRewards ? `${yearlyRewards.toFixed(2)} Zyp` : '0 Zyp'}</span></div>
+        <div><strong>*Average daily Zyp rewards:</strong><span>{calculatedRewards ? `${calculatedRewards.toFixed(2)} Zyp` : '0 Zyps'}</span></div>
+        <div><strong>*Yearly average Zyp rewards:</strong><span>{yearlyRewards ? `${yearlyRewards.toFixed(2)} Zyp` : '0 Zyps'}</span></div>
         <small>based on current daily average</small>
       </div>
     </div>
