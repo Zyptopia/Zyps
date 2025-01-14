@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Zyps/static/css/main.a51e0f15.css",
+    "main.css": "/Zyps/static/css/main.2b639880.css",
     "main.js": "/Zyps/static/js/main.808e473b.js",
     "static/js/488.9c92ff38.chunk.js": "/Zyps/static/js/488.9c92ff38.chunk.js",
     "index.html": "/Zyps/index.html",
-    "main.a51e0f15.css.map": "/Zyps/static/css/main.a51e0f15.css.map",
+    "main.2b639880.css.map": "/Zyps/static/css/main.2b639880.css.map",
     "main.808e473b.js.map": "/Zyps/static/js/main.808e473b.js.map",
     "488.9c92ff38.chunk.js.map": "/Zyps/static/js/488.9c92ff38.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a51e0f15.css",
+    "static/css/main.2b639880.css",
     "static/js/main.808e473b.js"
   ]
 }
