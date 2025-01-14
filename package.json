@@ -2,7 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://zyptopia.github.io/Zyps",
+  "homepage": "https://zyptopia.github.io/Zyps/",
   "dependencies": {
     "chart.js": "^4.4.7",
     "cra-template": "1.2.0",
