@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, useNavigate } from 'react-router-dom'; // Import Link for client-side navigation
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -12,6 +13,7 @@ const Footer = () => {
         Use this site at your own risk.
       </p>
       <p>© {currentYear} Zyptopia. All rights reserved.</p>
+      <p> <Link to="/login" className="nav-link">Login</Link></p>
     </footer>
   );
 };
