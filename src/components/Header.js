@@ -20,7 +20,7 @@ function Header() {
       <div className="header-container">
         <h1 className="logo">Zyptopia</h1>
         <nav className="navigation">
-          <Link to="/" className="nav-link">Home</Link>
+          <Link to="/Zyps/" className="nav-link">Home</Link>
           <Link to="/about" className="nav-link">About</Link>
           {/* Show the Data Input link and Log Out button only if the user is logged in */}
           {auth.currentUser && (

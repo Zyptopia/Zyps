@@ -24,7 +24,7 @@ const App = () => {
     <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<HomePage />} />  {/* Public pages */}
+        <Route path="/Zyps" element={<HomePage />} />  {/* Public pages */}
         <Route path="/about" element={<AboutPage />} />
         <Route path="/calculator" element={<ZypsEarningsCalculator />} />
         <Route path="/login" element={<LoginPage />} />  {/* Login page (only accessible at /login) */}
