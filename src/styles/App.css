@@ -40,11 +40,12 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
 /* Logo styling */
 .logo {
-    font-size: 1.5rem;
+    font-size: 2rem;  /* Make the logo larger on desktop */
     font-weight: 600;
     margin: 0;
 }
@@ -94,6 +95,12 @@ body {
     .header-container {
         flex-direction: column;
         gap: 10px;
+        text-align: center; /* Center all header items on mobile */
+    }
+
+    .logo {
+        font-size: 1.8rem;  /* Slightly smaller logo on mobile */
+        margin-bottom: 10px; /* Add space between logo and menu */
     }
 
     .navigation {
@@ -162,21 +169,6 @@ select {
 
 .earnings-calculator small {
     color: #aaa;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .App {
-        padding: 10px;
-    }
-
-    select, input {
-        width: 100%; /* Ensure inputs and selects take full width */
-    }
-
-    .page-content {
-        padding: 10px;
-    }
 }
 
 /* Footer styling */

@@ -45,7 +45,7 @@ const Graph = ({ data }) => {
 
   return (
     <div>
-      <h1>Average Reward for 1,000,000 Tokens: {averageReward}</h1>
+      <h1>Average Reward per 1,000,000 Tokens: {averageReward}</h1>
       <Line data={chartData} />
     </div>
   );
