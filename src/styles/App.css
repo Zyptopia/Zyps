@@ -57,6 +57,7 @@ body {
     gap: 15px;
     flex-wrap: wrap; /* Allows wrapping on smaller screens */
     justify-content: center; /* Center the menu items */
+    width: 100%;
 }
 
 /* Navigation links */
@@ -97,12 +98,15 @@ body {
     .header-container {
         flex-direction: column;
         gap: 10px;
+        align-items: center; /* Ensure the items are centered horizontally */
+        justify-content: center;
     }
 
     .navigation {
         flex-direction: column;
         align-items: center; /* Center links vertically on small screens */
         gap: 10px;
+        width: 100%; /* Ensure full width for mobile */
     }
 
     .nav-link, .nav-button {
