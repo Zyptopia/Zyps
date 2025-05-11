@@ -110,11 +110,43 @@ const Graph = ({ data, averageReward }) => {
   const pad = arr => (showForecast ? [...arr, ...Array(forecastLabels.length).fill(null)] : arr);
 
   const datasets = [];
-  datasets.push({ label: 'Daily Reward', data: pad(values), borderColor: 'rgba(75,192,192,1)', fill: false });
-  if (showAverage) datasets.push({ label: 'Average', data: pad(Array(values.length).fill(averageReward)), borderDash: [5,5], borderColor: '#ffd700', fill: false });
-  if (showCumulative) datasets.push({ label: 'Cumulative', data: pad(cumValues), borderColor: '#00ff00', fill: false });
-  if (showTrendline) datasets.push({ label: 'Trendline', data: pad(trendline), borderDash: [10,5], borderColor: '#ff6347', fill: false });
-  if (showForecast) datasets.push({ label: '7 Day Forecast', data: [...Array(values.length).fill(null), ...forecastData], borderColor: '#8888ff', borderDash: [2,2], fill: false });
+  datasets.push({
+    label: 'Daily Reward',
+    data: pad(values),
+    borderColor: 'rgba(75,192,192,1)',
+    fill: false
+  });
+  if (showAverage) datasets.push({
+    label: 'Average',
+    data: pad(Array(values.length).fill(averageReward)),
+    borderDash: [5,5],
+    borderColor: '#ffd700',
+    fill: true,
+    backgroundColor: 'rgba(255,215,0,0.2)'
+  });
+  if (showCumulative) datasets.push({
+    label: 'Cumulative',
+    data: pad(cumValues),
+    borderColor: '#00ff00',
+    fill: true,
+    backgroundColor: 'rgba(0,255,0,0.2)'
+  });
+  if (showTrendline) datasets.push({
+    label: 'Trendline',
+    data: pad(trendline),
+    borderDash: [10,5],
+    borderColor: '#ff6347',
+    fill: true,
+    backgroundColor: 'rgba(255,99,71,0.2)'
+  });
+  if (showForecast) datasets.push({
+    label: '7 Day Forecast',
+    data: [...Array(values.length).fill(null), ...forecastData],
+    borderColor: '#8888ff',
+    borderDash: [2,2],
+    fill: true,
+    backgroundColor: 'rgba(136,136,255,0.2)'
+  });
 
   const chartData = { labels: chartLabels, datasets };
   const options = {
@@ -130,22 +162,64 @@ const Graph = ({ data, averageReward }) => {
 
   return (
     <div>
-      <div style={{ textAlign: 'center', marginBottom: '1rem', color: '#00BFFF', fontSize: '1.1rem', fontWeight: 'bold' }}>
+      <div style={{
+        textAlign: 'center',
+        marginBottom: '1rem',
+        color: '#00BFFF',
+        fontSize: '1.1rem',
+        fontWeight: 'bold'
+      }}>
         Average Daily Zyps: {averageReward.toFixed(2)}
       </div>
 
-      <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-        <label><input type="checkbox" checked={showAverage} onChange={() => setShowAverage(!showAverage)} /> Average</label>
-        <label><input type="checkbox" checked={showCumulative} onChange={() => setShowCumulative(!showCumulative)} /> Cumulative</label>
-        <label><input type="checkbox" checked={showTrendline} onChange={() => setShowTrendline(!showTrendline)} /> Trendline</label>
-        <label><input type="checkbox" checked={showForecast} onChange={() => setShowForecast(!showForecast)} /> 7 Day Forecast</label>
+      <div style={{
+        display: 'flex',
+        gap: '1rem',
+        justifyContent: 'center',
+        flexWrap: 'wrap'
+      }}>
+        <label>
+          <input
+            type="checkbox"
+            checked={showAverage}
+            onChange={() => setShowAverage(!showAverage)}
+          /> Average
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            checked={showCumulative}
+            onChange={() => setShowCumulative(!showCumulative)}
+          /> Cumulative
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            checked={showTrendline}
+            onChange={() => setShowTrendline(!showTrendline)}
+          /> Trendline
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            checked={showForecast}
+            onChange={() => setShowForecast(!showForecast)}
+          /> 7 Day Forecast
+        </label>
       </div>
 
       <div style={{ height: '400px', marginTop: '1rem', boxSizing: 'border-box' }}>
         <Line data={chartData} options={options} />
       </div>
 
-      <div style={{ backgroundColor: '#282c34', color: '#fff', padding: '1rem', borderRadius: 4, marginTop: '1rem', boxSizing: 'border-box' }}>
+      <div style={{
+        backgroundColor: '#282c34',
+        color: '#fff',
+        padding: '1rem',
+        borderRadius: 4,
+        marginTop: '1rem',
+        boxSizing: 'border-box'
+      }}>
         <h3 style={{ margin: '0 0 .5rem' }}>Chart Overview</h3>
         <ul style={{ margin: 0, padding: 0, listStyle: 'disc inside', color: '#ccc' }}>
           <li><strong>Average</strong>: Shows a flat line of your average daily Zyps.</li>

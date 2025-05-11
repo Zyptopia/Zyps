@@ -81,6 +81,9 @@ const HomePage = () => {
           name="description"
           content="Zyptopia is a free, community-driven platform for Zypto token holders to track daily Zyp rewards, visualize trends, and calculate earnings in Zyps and USD."
         />
+        {/* ensure proper mobile scaling */}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
         {/* Open Graph */}
         <meta property="og:title" content="Zyptopia – Daily Zyp Rewards Tracker" />
         <meta
