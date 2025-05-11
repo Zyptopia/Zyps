@@ -1,7 +1,9 @@
+// src/firebase.js
+
 // Import the functions you need from the SDKs
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";  // Firestore
-import { getAnalytics } from "firebase/analytics";  // Optional, if using Analytics
+import { getFirestore } from "firebase/firestore";      // Firestore database
+import { getAnalytics, logEvent as fbLogEvent } from "firebase/analytics"; // Analytics + logEvent helper
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -14,12 +16,19 @@ const firebaseConfig = {
   measurementId: "G-4FBN7FGWTL"
 };
 
-// Initialize Firebase
+// Initialize Firebase app
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);  // Only if you're using analytics
+
+// Initialize Analytics
+const analytics = getAnalytics(app);
 
 // Initialize Firestore
 const db = getFirestore(app);
 
-// Export Firestore db
-export { db };
+// Wrap logEvent so you can import it directly:
+function logEvent(eventName, params) {
+  return fbLogEvent(analytics, eventName, params);
+}
+
+// Export everything you need across your codebase
+export { app, db, analytics, logEvent };
