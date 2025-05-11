@@ -98,7 +98,7 @@ const HomePage = () => {
       <div className="page-content">
         <h1>Welcome to Zyptopia</h1>
 
-        {/* Timeframe selector - now wraps on narrow screens */}
+        {/* Timeframe selector - now stacks on narrow screens */}
         <div style={{
           display: 'flex',
           flexWrap: 'wrap',
@@ -106,11 +106,16 @@ const HomePage = () => {
           justifyContent: 'center',
           marginBottom: '1rem'
         }}>
-          <label style={{ whiteSpace: 'nowrap' }}>
-            Timeframe:&nbsp;
+          <label style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center'
+          }}>
+            Timeframe:
             <select
               value={dateRange}
               onChange={e => handleRangeChange(e.target.value)}
+              style={{ marginTop: '0.5rem' }}
             >
               <option value="7">Last 7 Entries</option>
               <option value="30">Last 30 Entries</option>
@@ -122,20 +127,30 @@ const HomePage = () => {
 
           {dateRange === 'custom' && (
             <>
-              <label style={{ whiteSpace: 'nowrap' }}>
-                Start:&nbsp;
+              <label style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center'
+              }}>
+                Start:
                 <input
                   type="date"
                   value={startDate}
                   onChange={e => handleStartDate(e.target.value)}
+                  style={{ marginTop: '0.5rem' }}
                 />
               </label>
-              <label style={{ whiteSpace: 'nowrap' }}>
-                End:&nbsp;
+              <label style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center'
+              }}>
+                End:
                 <input
                   type="date"
                   value={endDate}
                   onChange={e => handleEndDate(e.target.value)}
+                  style={{ marginTop: '0.5rem' }}
                 />
               </label>
             </>
