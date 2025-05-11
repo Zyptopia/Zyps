@@ -6,10 +6,10 @@ import Graph from '../components/Graph';
 import PromoBanner from '../components/PromoBanner';
 
 const HomePage = () => {
-  const [dateRange, setDateRange]       = useState('7');
-  const [startDate, setStartDate]       = useState('');
-  const [endDate, setEndDate]           = useState('');
-  const [filteredData, setFilteredData] = useState([]);
+  const [dateRange, setDateRange]         = useState('7');
+  const [startDate, setStartDate]         = useState('');
+  const [endDate, setEndDate]             = useState('');
+  const [filteredData, setFilteredData]   = useState([]);
   const [averageReward, setAverageReward] = useState(0);
 
   // track page view
@@ -75,7 +75,7 @@ const HomePage = () => {
   return (
     <>
       <Helmet>
-        {/* this meta makes the page responsive on mobile */}
+        {/* ensure correct scaling on mobile */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Zyptopia – Track & Calculate Daily Zyp Rewards</title>
         <meta
@@ -98,8 +98,15 @@ const HomePage = () => {
       <div className="page-content">
         <h1>Welcome to Zyptopia</h1>
 
-        <div style={{ margin: '1rem 0' }}>
-          <label>
+        {/* Timeframe selector - now wraps on narrow screens */}
+        <div style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '1rem',
+          justifyContent: 'center',
+          marginBottom: '1rem'
+        }}>
+          <label style={{ whiteSpace: 'nowrap' }}>
             Timeframe:&nbsp;
             <select
               value={dateRange}
@@ -112,28 +119,28 @@ const HomePage = () => {
               <option value="custom">Custom Range</option>
             </select>
           </label>
-        </div>
 
-        {dateRange === 'custom' && (
-          <div style={{ marginBottom: '1rem' }}>
-            <label style={{ marginRight: '1rem' }}>
-              Start:&nbsp;
-              <input
-                type="date"
-                value={startDate}
-                onChange={e => handleStartDate(e.target.value)}
-              />
-            </label>
-            <label>
-              End:&nbsp;
-              <input
-                type="date"
-                value={endDate}
-                onChange={e => handleEndDate(e.target.value)}
-              />
-            </label>
-          </div>
-        )}
+          {dateRange === 'custom' && (
+            <>
+              <label style={{ whiteSpace: 'nowrap' }}>
+                Start:&nbsp;
+                <input
+                  type="date"
+                  value={startDate}
+                  onChange={e => handleStartDate(e.target.value)}
+                />
+              </label>
+              <label style={{ whiteSpace: 'nowrap' }}>
+                End:&nbsp;
+                <input
+                  type="date"
+                  value={endDate}
+                  onChange={e => handleEndDate(e.target.value)}
+                />
+              </label>
+            </>
+          )}
+        </div>
 
         <Graph data={filteredData} averageReward={averageReward} />
 

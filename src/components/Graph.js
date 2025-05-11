@@ -92,7 +92,6 @@ const Graph = ({ data, averageReward }) => {
     const lastDate = new Date(fullDates[n - 1]);
     const flabs = [];
     const fdata = [];
-    // initial window: last 30 of fullValues
     const window = fullValues.slice(-30);
     let rolling = [...window];
     for (let i = 1; i <= 7; i++) {
@@ -151,18 +150,26 @@ const Graph = ({ data, averageReward }) => {
 
   const options = {
     responsive: true,
-    maintainAspectRatio: true,         // <-- let CSS wrapper control height
+    maintainAspectRatio: true,         // wrapper sets height via CSS
     interaction: { mode: 'index', intersect: false },
     plugins: {
       tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${ctx.formattedValue}` } },
       legend: { position: 'bottom' }
     },
-    scales: { x: { ticks: { maxRotation: 0, autoSkip: true, maxTicksLimit: 10 } } }
+    scales: {
+      x: {
+        ticks: {
+          autoSkip: true,
+          maxTicksLimit: 10,
+          maxRotation: 45,  // ← allow angled labels
+          minRotation: 45
+        }
+      }
+    }
   };
 
   return (
     <div>
-      {/* show average prominently */}
       <div style={{
         textAlign: 'center',
         marginBottom: '1rem',
@@ -173,7 +180,6 @@ const Graph = ({ data, averageReward }) => {
         Average Daily Zyps: {averageReward.toFixed(2)}
       </div>
 
-      {/* toggles */}
       <div style={{
         display: 'flex',
         gap: '1rem',
@@ -186,11 +192,10 @@ const Graph = ({ data, averageReward }) => {
         <label><input type="checkbox" checked={showForecast} onChange={() => setShowForecast(!showForecast)} /> 7 Day Forecast</label>
       </div>
 
-      {/* fluid wrapper: always full width, keeps a 2:1 ratio */}
       <div style={{
         position: 'relative',
         width: '100%',
-        paddingBottom: '50%',      // 50% = 2:1 aspect
+        paddingBottom: '50%',    // 2:1 aspect
         marginTop: '1rem',
         boxSizing: 'border-box'
       }}>
