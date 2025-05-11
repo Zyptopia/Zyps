@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import ZypsEarningsCalculator from './pages/CalculatorPage';
 import HistoricalZypsPage from './pages/HistoricalZypsPage';
+import AboutZyptoPage from './pages/AboutZyptoPage';
 import AboutPage from './pages/AboutPage';
 import DataInputPage from './pages/DataInputPage';
 import LoginPage from './pages/LoginPage';
@@ -45,6 +46,7 @@ const App = () => {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/calculator" element={<ZypsEarningsCalculator />} />
         <Route path="/historical" element={<HistoricalZypsPage />} />
+        <Route path="/about-zypto" element={<AboutZyptoPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/dashboard" element={user ? <DashboardPage /> : <Navigate to="/login" />} />
         <Route path="/data-input" element={user ? <DataInputPage /> : <Navigate to="/login" />} />
