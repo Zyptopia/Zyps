@@ -64,9 +64,11 @@ const Graph = ({ data, averageReward }) => {
     const vals = sorted.map(d => d.rewardPerToken);
     setLabels(dates);
     setValues(vals);
+
     // cumulative
     let sum = 0;
     setCumValues(vals.map(v => (sum += v)));
+
     // trendline
     const n = vals.length;
     const x = vals.map((_, i) => i);
@@ -107,51 +109,49 @@ const Graph = ({ data, averageReward }) => {
   }, [fullValues, fullDates]);
 
   const chartLabels = showForecast ? [...labels, ...forecastLabels] : labels;
-  const pad = arr => (showForecast ? [...arr, ...Array(forecastLabels.length).fill(null)] : arr);
+  const pad = arr =>
+    showForecast ? [...arr, ...Array(forecastLabels.length).fill(null)] : arr;
 
-  const datasets = [];
-  datasets.push({
-    label: 'Daily Reward',
-    data: pad(values),
-    borderColor: 'rgba(75,192,192,1)',
-    fill: false
-  });
-  if (showAverage) datasets.push({
-    label: 'Average',
-    data: pad(Array(values.length).fill(averageReward)),
-    borderDash: [5,5],
-    borderColor: '#ffd700',
-    fill: true,
-    backgroundColor: 'rgba(255,215,0,0.2)'
-  });
-  if (showCumulative) datasets.push({
-    label: 'Cumulative',
-    data: pad(cumValues),
-    borderColor: '#00ff00',
-    fill: true,
-    backgroundColor: 'rgba(0,255,0,0.2)'
-  });
-  if (showTrendline) datasets.push({
-    label: 'Trendline',
-    data: pad(trendline),
-    borderDash: [10,5],
-    borderColor: '#ff6347',
-    fill: true,
-    backgroundColor: 'rgba(255,99,71,0.2)'
-  });
-  if (showForecast) datasets.push({
-    label: '7 Day Forecast',
-    data: [...Array(values.length).fill(null), ...forecastData],
-    borderColor: '#8888ff',
-    borderDash: [2,2],
-    fill: true,
-    backgroundColor: 'rgba(136,136,255,0.2)'
-  });
+  const datasets = [
+    { label: 'Daily Reward', data: pad(values), borderColor: 'rgba(75,192,192,1)', fill: false }
+  ];
+  if (showAverage)
+    datasets.push({
+      label: 'Average',
+      data: pad(Array(values.length).fill(averageReward)),
+      borderDash: [5, 5],
+      borderColor: '#ffd700',
+      fill: false
+    });
+  if (showCumulative)
+    datasets.push({
+      label: 'Cumulative',
+      data: pad(cumValues),
+      borderColor: '#00ff00',
+      fill: false
+    });
+  if (showTrendline)
+    datasets.push({
+      label: 'Trendline',
+      data: pad(trendline),
+      borderDash: [10, 5],
+      borderColor: '#ff6347',
+      fill: false
+    });
+  if (showForecast)
+    datasets.push({
+      label: '7 Day Forecast',
+      data: [...Array(values.length).fill(null), ...forecastData],
+      borderColor: '#8888ff',
+      borderDash: [2, 2],
+      fill: false
+    });
 
   const chartData = { labels: chartLabels, datasets };
+
   const options = {
     responsive: true,
-    maintainAspectRatio: false,
+    maintainAspectRatio: true,         // <-- let CSS wrapper control height
     interaction: { mode: 'index', intersect: false },
     plugins: {
       tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${ctx.formattedValue}` } },
@@ -162,6 +162,7 @@ const Graph = ({ data, averageReward }) => {
 
   return (
     <div>
+      {/* show average prominently */}
       <div style={{
         textAlign: 'center',
         marginBottom: '1rem',
@@ -172,44 +173,35 @@ const Graph = ({ data, averageReward }) => {
         Average Daily Zyps: {averageReward.toFixed(2)}
       </div>
 
+      {/* toggles */}
       <div style={{
         display: 'flex',
         gap: '1rem',
         justifyContent: 'center',
         flexWrap: 'wrap'
       }}>
-        <label>
-          <input
-            type="checkbox"
-            checked={showAverage}
-            onChange={() => setShowAverage(!showAverage)}
-          /> Average
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            checked={showCumulative}
-            onChange={() => setShowCumulative(!showCumulative)}
-          /> Cumulative
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            checked={showTrendline}
-            onChange={() => setShowTrendline(!showTrendline)}
-          /> Trendline
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            checked={showForecast}
-            onChange={() => setShowForecast(!showForecast)}
-          /> 7 Day Forecast
-        </label>
+        <label><input type="checkbox" checked={showAverage} onChange={() => setShowAverage(!showAverage)} /> Average</label>
+        <label><input type="checkbox" checked={showCumulative} onChange={() => setShowCumulative(!showCumulative)} /> Cumulative</label>
+        <label><input type="checkbox" checked={showTrendline} onChange={() => setShowTrendline(!showTrendline)} /> Trendline</label>
+        <label><input type="checkbox" checked={showForecast} onChange={() => setShowForecast(!showForecast)} /> 7 Day Forecast</label>
       </div>
 
-      <div style={{ height: '400px', marginTop: '1rem', boxSizing: 'border-box' }}>
-        <Line data={chartData} options={options} />
+      {/* fluid wrapper: always full width, keeps a 2:1 ratio */}
+      <div style={{
+        position: 'relative',
+        width: '100%',
+        paddingBottom: '50%',      // 50% = 2:1 aspect
+        marginTop: '1rem',
+        boxSizing: 'border-box'
+      }}>
+        <div style={{
+          position: 'absolute',
+          top: 0, left: 0,
+          width: '100%',
+          height: '100%'
+        }}>
+          <Line data={chartData} options={options} />
+        </div>
       </div>
 
       <div style={{

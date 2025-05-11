@@ -1,4 +1,3 @@
-// src/pages/HomePage.js
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { db, logEvent } from '../firebase';
@@ -76,14 +75,13 @@ const HomePage = () => {
   return (
     <>
       <Helmet>
+        {/* this meta makes the page responsive on mobile */}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Zyptopia – Track & Calculate Daily Zyp Rewards</title>
         <meta
           name="description"
           content="Zyptopia is a free, community-driven platform for Zypto token holders to track daily Zyp rewards, visualize trends, and calculate earnings in Zyps and USD."
         />
-        {/* ensure proper mobile scaling */}
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-
         {/* Open Graph */}
         <meta property="og:title" content="Zyptopia – Daily Zyp Rewards Tracker" />
         <meta
