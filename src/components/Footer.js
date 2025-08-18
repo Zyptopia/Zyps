@@ -64,7 +64,7 @@ export default function Footer() {
           <a
             className="btn btn-primary"
             style={btnSmPrimary}
-            href="https://zypto.com/"
+            href="https://ref.zypto.com/ZRxWOW84"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackEvent('footer_click', { to: 'zypto_site' })}
