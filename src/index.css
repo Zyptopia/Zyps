@@ -1,13 +1,171 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* ============ Global base ============ */
+:root{
+  --bg: #0d1117;
+  --panel: #161b22;
+  --text: #e6edf3;
+  --muted: #9da7b3;
+  --border: rgba(255,255,255,0.12);
+  --elev: rgba(255,255,255,0.06);
+  --focus: #80bfff;
+  --brand: #57b8ff;  /* link/brand */
+  --brand-2: #a78bfa; /* accent */
+  --radius: 12px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*{ box-sizing: border-box; }
+html, body, #root{ height: 100%; }
+body{
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* Headings & rhythm */
+h1,h2,h3{ line-height: 1.2; margin: 0 0 .5rem; }
+p{ margin: 0 0 .8rem; }
+
+/* Accessible focus everywhere */
+:focus-visible{
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Utils */
+.sr-only{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
+  clip:rect(0,0,0,0); white-space:nowrap; border:0;
+}
+
+/* ============ Links ============ */
+a{
+  color: var(--brand);
+  text-decoration: none;
+}
+a:hover{ text-decoration: underline; }
+a.link-quiet{
+  color: var(--text);
+  text-decoration: underline;
+  opacity: .95;
+}
+
+/* Nav links (top menu) */
+.navigation .nav-link{
+  color: var(--text);
+  padding: .4rem .6rem;
+  border-radius: 8px;
+}
+.navigation .nav-link:hover{ background: var(--elev); }
+
+/* ============ Buttons ============ */
+button, .btn{
+  color: var(--text);
+  background: var(--elev);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: .55rem .9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+button:disabled, .btn:disabled{
+  opacity: .6; cursor: not-allowed;
+}
+.btn-primary{
+  background: rgba(255,255,255,0.08);
+}
+.btn-secondary{
+  background: rgba(255,255,255,0.10);
+}
+.nav-button{ /* legacy class from Menu */
+  composes: btn;
+}
+
+/* Promo banner buttons share the same look */
+.promo-banner__btn{
+  color: var(--text);
+  text-decoration: none;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: .5rem .8rem;
+  font-weight: 600;
+}
+
+/* ============ Inputs & selects ============ */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select,
+.ui-input,
+.ui-select{
+  width: 100%;
+  padding: .6rem .65rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.06); /* fixes “white on white” */
+  color: var(--text);
+}
+select option{
+  background: var(--panel);
+  color: var(--text);
+}
+
+/* ============ Tables ============ */
+table{ width:100%; border-collapse: collapse; font-size: .95rem; }
+thead tr{ background: rgba(255,255,255,0.04); }
+th, td{ padding: .6rem; }
+tbody tr{ border-top: 1px solid rgba(255,255,255,0.06); }
+
+/* ============ Cards & layout ============ */
+.page-content{ max-width: 1000px; margin: 1.5rem auto; padding: 0 1rem; }
+.card{
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+.graph-card{
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: .5rem .75rem .75rem;
+}
+
+/* Footer */
+.App-footer{
+  border-top: 1px solid var(--border);
+  margin-top: 1.25rem;
+  padding: 1rem;
+  color: var(--text);
+}
+
+/* Promo Banner container */
+.promo-banner{
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: .75rem;
+}
+
+/* Responsive niceties */
+@media (max-width: 720px){
+  .page-content{ padding: 0 .8rem; }
+}
+/* Home hero/banner centering */
+.home-hero,
+.top-banner,
+.App-header {
+  display: grid;
+  place-items: center;
+}
+.home-hero img,
+.top-banner img,
+.App-header img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
 }
