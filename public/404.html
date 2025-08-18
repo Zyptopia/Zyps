@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecting…</title>
+    <meta name="robots" content="noindex">
+    <script>
+      /* Single Page Apps for GitHub Pages – redirect 404s to /?p=<path> */
+      (function(l) {
+        var p = l.pathname.replace(/^\//,'');          // strip leading slash
+        // Build ?p=<encoded-path>&<existing-query>#<hash>
+        var search = (l.search ? l.search + '&' : '?') + 'p=' + encodeURIComponent(p);
+        l.replace(l.protocol + '//' + l.host + '/' + search + l.hash);
+      }(window.location));
+    </script>
+    <noscript>If you’re seeing this, enable JavaScript and reload.</noscript>
+  </head>
+  <body></body>
+</html>

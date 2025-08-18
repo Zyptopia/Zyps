@@ -2,11 +2,28 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+
+    <!-- Restore pretty URLs when arriving via 404 fallback (?p=...) -->
+    <script>
+      (function () {
+        var q = window.location.search;
+        if (!q) return;
+        var m = q.match(/[?&]p=([^&]+)/);
+        if (!m) return;
+        var path = '/' + decodeURIComponent(m[1]).replace(/^\//, '');
+        var newQuery = q.replace(/([?&])p=[^&]+&?/, '$1').replace(/[?&]$/, '');
+        var newUrl = path + (newQuery ? newQuery : '') + window.location.hash;
+        window.history.replaceState(null, '', newUrl);
+      })();
+    </script>
+
     <!-- Favicons -->
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16.png" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
+    <!-- If you also exported SVG, uncomment the next line -->
+    <!-- <link rel="icon" type="image/svg+xml" href="%PUBLIC_URL%/favicon.svg" /> -->
+    <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png" />
     <meta name="msapplication-TileImage" content="%PUBLIC_URL%/mstile-150x150.png" />
     <meta name="msapplication-TileColor" content="#0b0d10" />
 
