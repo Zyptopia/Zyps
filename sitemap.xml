@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.zyptopia.org/</loc></url>
-  <url><loc>https://www.zyptopia.org/get-started</loc></url>
-  <url><loc>https://www.zyptopia.org/calculator</loc></url>
-  <url><loc>https://www.zyptopia.org/historical</loc></url>
-  <url><loc>https://www.zyptopia.org/about-zypto</loc></url>
-  <url><loc>https://www.zyptopia.org/vault-key-card</loc></url>
-  <url><loc>https://www.zyptopia.org/faq</loc></url>
-  <url><loc>https://www.zyptopia.org/about</loc></url>
+  <url><loc>https://www.zyptopia.org/</loc><lastmod>2025-08-18</lastmod><changefreq>daily</changefreq></url>
+  <url><loc>https://www.zyptopia.org/historical</loc><lastmod>2025-08-18</lastmod></url>
+  <url><loc>https://www.zyptopia.org/calculator</loc><lastmod>2025-08-18</lastmod></url>
+  <url><loc>https://www.zyptopia.org/get-started</loc><lastmod>2025-08-18</lastmod></url>
+  <url><loc>https://www.zyptopia.org/about-zypto</loc><lastmod>2025-08-18</lastmod></url>
+  <url><loc>https://www.zyptopia.org/vault-key-card</loc><lastmod>2025-08-18</lastmod></url>
+  <url><loc>https://www.zyptopia.org/faq</loc><lastmod>2025-08-18</lastmod></url>
+  <url><loc>https://www.zyptopia.org/about</loc><lastmod>2025-08-18</lastmod></url>
 </urlset>
